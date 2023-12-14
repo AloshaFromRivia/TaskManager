@@ -1,0 +1,38 @@
+﻿@model IEnumerable<TaskManagerClient.Models.TaskModel>
+
+@{
+    ViewBag.Title = "Задачи";
+    Layout = "_Layout";
+}
+
+<div asp-validation-summary="All" class="text-danger"></div>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">ID</th>
+    <th scope="col">Название</th>
+     <th scope="col">Описание</th>
+    <th scope="col">Статус</th>
+    <th scope="col"></th>
+  </tr>
+  </thead>
+  <tbody>
+  @foreach (var item in Model)
+  {
+    <tr>
+      <th>@item.Id</th>
+      <th>@item.Name</th>
+      <th>@item.Description</th>
+      <th>@item.Status.Name</th>
+      <th>
+        <div class="btn-group">
+          <a class="btn btn-warning text-white" asp-controller="Home" asp-action="Edit" asp-route-id="@item.Id">Редактировать</a>
+          <a class="btn btn-danger text-white" asp-controller="Home" asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
+        </div>
+      </th>
+    </tr>
+  }
+  </tbody>
+</table>
+<a class="btn btn-primary m-2 text-white" asp-controller="Home" asp-action="Create"><h3>Добавить</h3></a>

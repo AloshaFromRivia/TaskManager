@@ -1,0 +1,25 @@
+﻿@model PostTaskRequestModel
+
+@{
+    ViewBag.Title = "Создание";
+    Layout = "_Layout";
+}
+
+<h2>Создание задачи</h2>
+
+<div asp-validation-summary="All" class="my-2 text-danger"></div>
+<form asp-action="Create" method="post">
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label"></label>
+        <input class="form-control" asp-for="Name"/>
+    </div>
+    <div class="mb-3">
+           <label asp-for="Description" class="form-label"></label>
+           <input class="form-control" asp-for="Description"/>
+       </div>
+    <div class="mb-3">
+        <label asp-for="StatusId" class="form-label"></label>
+        <select class="form-control" asp-for="StatusId" asp-items="@ViewBag.StatusList"></select>
+    </div>
+    <button type="submit" class="btn btn-primary">Создать</button>
+</form>
